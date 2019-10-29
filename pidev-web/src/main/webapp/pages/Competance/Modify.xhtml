@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/test.xhtml">
+
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="houss">
+	<h:panelGroup columns="2">
+	<h:form>
+				<table>
+					<tr>
+						<td><h:outputText value="Nom"></h:outputText></td>
+						<td><h:inputText value="#{competanceBean.name}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="description"></h:outputText></td>
+						<td><h:inputText value="#{competanceBean.description}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="Type"></h:outputText></td>
+						<td><h:selectOneMenu value="#{competanceBean.type}">
+								<f:selectItem itemLabel="Choisir Type" itemValue="" />
+								<f:selectItems value="#{dataBean.type}" />
+							</h:selectOneMenu></td>
+					</tr>
+					
+					
+				</table>
+				<h:commandButton action="#{competanceBean.updatecompetance()}"
+							value="Confirm" />
+			</h:form>
+			
+						
+		</h:panelGroup>
+		</ui:define>
+</ui:composition>
