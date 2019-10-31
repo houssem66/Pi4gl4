@@ -1,4 +1,4 @@
-package services;
+package tn.esprit.service.impl; 
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
@@ -13,7 +13,7 @@ import iservices.IBonPointServiceRemote;
 @Stateful
 public class BonPointService implements IBonPointServiceLocal,IBonPointServiceRemote {
 
-	@PersistenceContext(unitName = "advyteam")
+	@PersistenceContext(unitName = "pidev-ejb")
 	EntityManager em;
 
 	@Override
