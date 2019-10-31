@@ -1,4 +1,4 @@
-package iservices;
+package tn.esprit.service.interfaces; 
 
 import javax.ejb.Remote;
 
