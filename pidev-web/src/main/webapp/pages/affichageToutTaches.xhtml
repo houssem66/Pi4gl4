@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+template="/resources/template.xhtml">
+<ui:param name="page_name" value="Affichage" />
+<ui:define name="content">
+<h:panelGroup columns="2">
+<h:form>
+<h:dataTable value="#{tacheBean.taches}" var="tache" border="1">
+<h:column><f:facet name="header"><h:outputText value="Nom" /></f:facet>
+<h:outputText value="#{tache.nom}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="Date de début" /></f:facet>
+<h:outputText value="#{tache.dateDeDebut}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="Nombre d'heures nécessaire estimé en heures" /></f:facet>
+<h:outputText value="#{tache.nombreDheuresEstimes}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="Etat" /></f:facet>
+<h:outputText value="#{tache.etatActuel}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="Priorité" /></f:facet>
+<h:outputText value="#{tache.priorite== 0 ? 'normale' : 'prioritaire'}" /></h:column>
+<h:column>
+<f:facet name="header"><h:outputText value="Action" /></f:facet>
+<h:commandButton action="#{tacheBean.displayTache(tache)}" value="Modifier" />
+</h:column>
+<h:column>
+<f:facet name="header"><h:outputText value="Action" /></f:facet>
+<h:commandButton action="#{tacheBean.deleteTache(tache.id)}" value="Supprimer" />
+</h:column>
+</h:dataTable>
+</h:form>
+</h:panelGroup>
+</ui:define>
+</ui:composition>
