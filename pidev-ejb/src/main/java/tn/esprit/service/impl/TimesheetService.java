@@ -1,4 +1,4 @@
-package services;
+package tn.esprit.service.impl; 
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
@@ -14,7 +14,7 @@ import iservices.ITimesheetServiceRemote;
 @Stateful
 public class TimesheetService implements ITimesheetServiceLocal,ITimesheetServiceRemote {
 
-	@PersistenceContext(unitName = "advyteam")
+	@PersistenceContext(unitName = "pidev-ejb")
 	EntityManager em;
 
 	@Override
