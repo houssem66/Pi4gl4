@@ -35,6 +35,7 @@
 	</licenses>
 
 	<dependencies>
+		
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>

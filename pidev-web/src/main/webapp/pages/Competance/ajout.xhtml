@@ -8,28 +8,28 @@
 	<ui:define name="houss">
 		<h:panelGroup columns="2">
 			<h:form>
-				<table>
-					<tr>
-						<td><h:outputText value="Nom"></h:outputText></td>
-						<td><h:inputText value="#{competanceBean.name}"></h:inputText></td>
-					</tr>
-					<tr>
-						<td><h:outputText value="description"></h:outputText></td>
-						<td><h:inputText value="#{competanceBean.description}"></h:inputText></td>
-					</tr>
-					<tr>
-						<td><h:outputText value="Type"></h:outputText></td>
-						<td><h:selectOneMenu value="#{competanceBean.type}">
+				  
+					  <label for="exampleSelect" class="">Nom</label>
+						
+						<h:inputText class="form-control" value="#{competanceBean.name}"></h:inputText>
+					  
+					  
+						<label for="exampleSelect" class="">Description</label>
+						<h:inputText class="form-control" value="#{competanceBean.description}"></h:inputText>
+					  
+					  
+						<h:outputText value="Type"></h:outputText><
+						<h:selectOneMenu class="form-control" value="#{competanceBean.type}">
 								<f:selectItem itemLabel="Choisir Type" itemValue="" />
 								<f:selectItems value="#{dataBean.type}" />
-							</h:selectOneMenu></td>
-					</tr>
-					<tr>
-						<td colspan="2"><h:commandButton value="Create"
-								action="#{competanceBean.addcompetance()}" /></td>
+							</h:selectOneMenu>
+					  
+					  
+						<h:commandButton class="mb-2 mr-2 btn btn-primary btn-block" value="Create"
+								action="#{competanceBean.addcompetance()}" />
 
-					</tr>
-				</table>
+					  
+				  
 			</h:form>
 		</h:panelGroup>
 	</ui:define>

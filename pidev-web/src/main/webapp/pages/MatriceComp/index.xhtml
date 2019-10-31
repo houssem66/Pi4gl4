@@ -5,67 +5,68 @@
 
 	<ui:param name="page_name" value="Accueil" />
 	<ui:define name="houss">
-		<div class="row">
-			<h:panelGroup columns="2">
-				<h:form>
-					<div class="main-card mb-3 card">
-						<div class="card-body">
-							<h5 class="card-title">index</h5>
-							<table class="mb-0 table">
-							<thead>
-								<tr>
-								<th>Categroy </th>
-								<th>Description</th>
-								<th>Action</th>
-								</tr>
-							</thead>
+
+		<h:panelGroup columns="2">
+			<h:form>
+				<div class="main-card mb-3 card">
+					<div class="card-body">
+						<h5 class="card-title">index</h5>
+						<table class="mb-0 table">
+
 							<tbody>
-							<tr>
-							
+
 								<h:dataTable class="mb-0 table table-hover"
-									value="#{matriceCompBean.matriceComps}" var="mat" >
+									value="#{matriceCompBean.matriceComps}" var="mat">
 									<h:column>
-										
+										<f:facet name="header">
+											<h:outputText value="Category" />
+										</f:facet>
 										<h:outputText value="#{mat.category}" />
 									</h:column>
 									<h:column>
-										
+										<f:facet name="header">
+											<h:outputText value="Description" />
+										</f:facet>
 										<h:outputText value="#{mat.description}" />
 									</h:column>
 
 
 
 									<h:column>
-										
+										<f:facet name="header">
+											<h:outputText value="Action" />
+										</f:facet>
 										<h:commandButton class="mb-2 mr-2 btn btn-danger"
 											action="#{matriceCompBean.deleteMatriceComp(mat.id)}"
 											value="Supprimer" />
 										<h:commandButton action="#{matriceCompBean.redModify(mat)}"
-											value="Modify" class="mb-2 mr-2 btn btn-primary"/>
-										<h:commandButton 
+											value="Modify" class="mb-2 mr-2 btn btn-primary" />
+										<h:commandButton
 											action="#{matriceCompBean.reddvoirListCompetances(mat.id)}"
-											value="voir List" class="mb-2 mr-2 btn btn-info"/>
+											value="voir List" class="mb-2 mr-2 btn btn-info" />
 
 
 									</h:column>
 								</h:dataTable>
-								</tr></tbody>
-							</table>
-							
-							
-						</div>
-					</div>
-				</h:form>
-			</h:panelGroup>
-		</div>
-		<div class="row">
-			<h:panelGroup columns="2">
-				<h:form>
-					<h:commandButton action="#{ficheMetierBean.redADD()}"
-						value="Create" class="mb-2 mr-2 btn btn-primary btn-lg btn-block" />
 
-				</h:form>
-			</h:panelGroup>
-		</div>
+							</tbody>
+						</table>
+
+
+					</div>
+
+					<h:panelGroup columns="2">
+						<h:form>
+							<h:commandButton action="#{ficheMetierBean.redADD()}"
+								value="Create" class="mb-2 mr-2 btn btn-primary btn-block" />
+
+						</h:form>
+					</h:panelGroup>
+				</div>
+			</h:form>
+		</h:panelGroup>
+
+
+
 	</ui:define>
 </ui:composition>
