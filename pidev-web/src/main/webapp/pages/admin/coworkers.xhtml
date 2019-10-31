@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jstl/core" template="/test.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="houss">
+		<div class="row">
+			<h:panelGroup columns="2">
+				<h:form>
+					<div class="main-card mb-3 card">
+						<div class="card-body">
+							<h5 class="card-title">Select CoWorker To send assessment</h5>
+							<div class="form-group row">
+								<div class="col-sm-10">
+								<h:panelGroup columns="3">
+									<h:selectOneRadio value="#{assessmentBean.coworker}" >
+										<c:forEach items="#{assessmentBean.employees}" var="e">
+											<c:if test="#{assessmentBean.sent360(e.idEmployee)}">
+													<f:selectItem class="form-check-input radio-inline" itemValue="#{e.idEmployee}"
+														itemLabel="#{e.firstName} #{e.lastName}" />
+											</c:if>
+										</c:forEach>
+									</h:selectOneRadio>
+								</h:panelGroup>
+								</div>
+								<h:commandButton class="btn mr-2 mb-2 btn-primary" value="Send assessment to coworker"
+									action="#{assessmentBean.addAssessment360Coworker()}" />
+								<h:commandButton class="btn mr-2 mb-2 btn-success" value="Done"
+									action="#{assessmentBean.doneSendingToCoworker()}" />
+							</div>
+						</div>
+					</div>
+				</h:form>
+			</h:panelGroup>
+		</div>
+
+	</ui:define>
+</ui:composition>

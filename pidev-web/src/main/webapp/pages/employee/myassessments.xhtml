@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jstl/core" template="/test.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="houss">
+		<div class="row">
+			<div class="main-card mb-3 card">
+				<div class="card-body">
+					<h5 class="card-title">Connected Employee : #{myassessmentBean.connectedEmployeeString}</h5>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<h:panelGroup columns="2">
+				<h:form>
+					<div class="main-card mb-3 card">
+						<div class="card-body">
+							<h5 class="card-title">Criteria List</h5>
+							<table class="mb-0 table">
+								<thead>
+									<tr>
+										<th>Employee to evaluate</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="#{myassessmentBean.assessmentsToDo}" var="a">
+										<tr>
+											<td>#{myassessmentBean.employeeToEvaluate(a.idDone360)}</td>
+											<td><h:commandButton class='btn btn-success btn-xs'
+													action="#{myassessmentBean.evaluateEmployee(a.idDone360)}"
+													value="Evaluate" /></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</h:form>
+			</h:panelGroup>
+		</div>
+	</ui:define>
+</ui:composition>

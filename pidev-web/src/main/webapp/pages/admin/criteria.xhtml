@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jstl/core" template="/test.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="houss">
+		<div class="row">
+			<h:panelGroup columns="2">
+				<h:form>
+					<div class="main-card mb-3 card">
+						<div class="card-body">
+							<h5 class="card-title">Add criteria</h5>
+							
+								<table>
+									<tr>
+									<div class="form-group">
+										<td><h:outputText  value="Criteria Name"></h:outputText></td>
+										<td><h:inputText id="nameCrit" value="#{criteriaBean.name}" requiredMessage="Please enter a name." class="form-control" required="true">
+										<f:validateRequired for="nameCrit"></f:validateRequired></h:inputText></td>
+										<h:message for="nameCrit"></h:message>
+									</div>
+									</tr>
+									<tr>
+									<div class="form-group">
+										<td><h:outputText value="Criteria Description"></h:outputText></td>
+										<td><h:inputText id="descCrit" value="#{criteriaBean.description}"  requiredMessage="Please enter a description." class="form-control" required="true">
+										<f:validateRequired for="descCrit"></f:validateRequired></h:inputText></td>
+										<h:message for="descCrit"></h:message>
+									</div>
+									</tr>
+									<tr>
+									<div class="form-group">
+										<td colspan="2"><h:commandButton value="Add Criteria"
+												class="btn mr-2 mb-2 btn-success"
+												action="#{criteriaBean.addCriteria()}" /> <h:commandButton
+												value="Update Criteria" class="btn mr-2 mb-2 btn-warning"
+												onclick="if (! confirm('Really want to update this criteria?')) return false"
+												action="#{criteriaBean.updateCriteria()}" /></td>
+									</div>
+									</tr>
+								</table>
+							
+						</div>
+					</div>
+
+				</h:form>
+			</h:panelGroup>
+		</div>
+
+		<div class="row">
+			<h:panelGroup columns="2">
+				<h:form>
+					<div class="main-card mb-3 card">
+						<div class="card-body">
+							<h5 class="card-title">Criteria List</h5>
+							<table class="mb-0 table">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Description</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="#{criteriaBean.criterias}" var="c">
+										<tr>
+											<td>#{c.name}</td>
+											<td>#{c.description}</td>
+											<td ><h:commandButton
+													onclick="if (! confirm('Really want to delete this criteria?')) return false"
+													class='btn btn-danger btn-xs'
+													action="#{criteriaBean.removeCriteria(c.idCriteria)}"
+													value="Supprimer" /> <h:commandButton
+													class="btn btn-secondary"
+													action="#{criteriaBean.displayCriteria(c)}" value="Show" />
+
+
+											</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</h:form>
+			</h:panelGroup>
+		</div>
+	</ui:define>
+</ui:composition>

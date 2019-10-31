@@ -1,0 +1,183 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jstl/core" template="/test.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="houss">
+		<div class="row">
+			<h:panelGroup columns="2">
+				<h:form>
+					<div class="main-card mb-3 card">
+						<div class="card-body">
+
+							<h5 class="card-title">Criteria List</h5>
+							<table class="mb-0 table">
+								<thead>
+									<tr>
+										<th>Criteria</th>
+										<th>score</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Team Working :<br></br> The ability to contribute to
+											teams and to improve their effectiveness through personal
+											commitment.
+										</td>
+										<td><h:selectOneMenu class="form-control" value="#{myassessmentBean.critScor1}">
+
+												<f:selectItem itemValue="1" itemLabel="Bad" />
+												<f:selectItem itemValue="2" itemLabel="Neutral" />
+												<f:selectItem itemValue="3" itemLabel="Good" />
+
+											</h:selectOneMenu></td>
+									</tr>
+									<tr>
+										<td>Adaptability/Change Management :<br></br> The ability
+											to respond and adapt to changing circumstances and to manage,
+											solve problems and provide solutions in a climate of
+											ambiguity.</td>
+										<td><h:selectOneMenu class="form-control" value="#{myassessmentBean.critScor2}">
+
+												<f:selectItem itemValue="1" itemLabel="Bad" />
+												<f:selectItem itemValue="2" itemLabel="Neutral" />
+												<f:selectItem itemValue="3" itemLabel="Good" />
+
+											</h:selectOneMenu></td>
+									</tr>
+									<tr>
+										<td>Developing self : <br></br> The ability to focus on own development and to take action to learn. </td>
+										<td>
+										<h:selectOneMenu class="form-control" value="#{myassessmentBean.critScor3}">
+
+											<f:selectItem itemValue="1" itemLabel="Bad" />
+											<f:selectItem itemValue="2" itemLabel="Neutral" />
+											<f:selectItem itemValue="3" itemLabel="Good" />
+
+										</h:selectOneMenu>
+
+										</td>
+									</tr>
+									<tr>
+										<td>Motivation : <br></br>The ability to support and
+												encourage individuals and teams, so that they give of their
+												best. </td>
+										<td><h:selectOneMenu class="form-control" value="#{myassessmentBean.critScor4}">
+
+											<f:selectItem itemValue="1" itemLabel="Bad" />
+											<f:selectItem itemValue="2" itemLabel="Neutral" />
+											<f:selectItem itemValue="3" itemLabel="Good" />
+
+										</h:selectOneMenu>
+
+										</td>
+									</tr>
+									<tr>
+										<td>Analytical thinking : <br></br>The ability to
+												analyse, investigate interpret data, issues situations. </td>
+										<td><h:selectOneMenu class="form-control" value="#{myassessmentBean.critScor5}">
+
+												<f:selectItem itemValue="1" itemLabel="Bad" />
+												<f:selectItem itemValue="2" itemLabel="Neutral" />
+												<f:selectItem itemValue="3" itemLabel="Good" />
+
+											</h:selectOneMenu></td>
+									</tr>
+									<tr>
+										<td>Integrity and Ethical management : <br></br>The
+												ability to work ethically according to professional company
+												values. </td>
+										<td><h:selectOneMenu class="form-control" value="#{myassessmentBean.critScor6}">
+
+												<f:selectItem itemValue="1" itemLabel="Bad" />
+												<f:selectItem itemValue="2" itemLabel="Neutral" />
+												<f:selectItem itemValue="3" itemLabel="Good" />
+
+											</h:selectOneMenu></td>
+									</tr>
+									<tr>
+										<td>Communication : <br></br>The ability to give and
+												gather information and to actively manage the communication
+												process. </td> 
+										<td><h:selectOneMenu class="form-control" value="#{myassessmentBean.critScor7}">
+
+												<f:selectItem itemValue="1" itemLabel="Bad" />
+												<f:selectItem itemValue="2" itemLabel="Neutral" />
+												<f:selectItem itemValue="3" itemLabel="Good" />
+
+											</h:selectOneMenu></td>
+									</tr>
+									<tr>
+										<td>Decision Making : <br></br>The ability to evaluate or
+												judge the best course of action and to make decisions at the
+												appropriate speed </td>
+										<td><h:selectOneMenu class="form-control" value="#{myassessmentBean.critScor8}">
+
+												<f:selectItem itemValue="1" itemLabel="Bad" />
+												<f:selectItem itemValue="2" itemLabel="Neutral" />
+												<f:selectItem itemValue="3" itemLabel="Good" />
+
+											</h:selectOneMenu></td>
+									</tr>
+									<tr>
+										<td>Planning and Organising : <br></br>The ability to
+												plan, organise and prioritise work. Balancing resources,
+												skills, priorities and timescales to achieve objectives. </td>
+										
+										<td><h:selectOneMenu class="form-control" value="#{myassessmentBean.critScor9}">
+
+												<f:selectItem itemValue="1" itemLabel="Bad" />
+												<f:selectItem itemValue="2" itemLabel="Neutral" />
+												<f:selectItem itemValue="3" itemLabel="Good" />
+
+											</h:selectOneMenu></td>
+									</tr>
+									<tr>
+										<td>Leadership and inspiring others : <br></br>The
+												ability to use personal skills to guide and inspire
+												individuals/groups towards achieving goals. </td>
+										<td><h:selectOneMenu class="form-control" value="#{myassessmentBean.critScor10}">
+
+												<f:selectItem itemValue="1" itemLabel="Bad" />
+												<f:selectItem itemValue="2" itemLabel="Neutral" />
+												<f:selectItem itemValue="3" itemLabel="Good" />
+
+											</h:selectOneMenu></td>
+									</tr>
+									<tr>
+										<td>Developing others : <br></br> The ability to improve
+												performance through training and development of individuals
+												and teams. </td>
+										<td><h:selectOneMenu class="form-control" value="#{myassessmentBean.critScor11}">
+
+												<f:selectItem itemValue="1" itemLabel="Bad" />
+												<f:selectItem itemValue="2" itemLabel="Neutral" />
+												<f:selectItem itemValue="3" itemLabel="Good" />
+
+											</h:selectOneMenu></td>
+									</tr>
+									<tr>
+										<td>Relationship Building : <br></br>The ability to get
+												on well with a wide range of people and build long term
+												trusting relationships. </td>
+										<td><h:selectOneMenu class="form-control" value="#{myassessmentBean.critScor12}">
+
+												<f:selectItem itemValue="1" itemLabel="Bad" />
+												<f:selectItem itemValue="2" itemLabel="Neutral" />
+												<f:selectItem itemValue="3" itemLabel="Good" />
+
+											</h:selectOneMenu></td>
+									</tr>
+								</tbody>
+							</table>
+							<br></br>
+							<h:commandButton class='btn btn-success btn-xs'
+								action="#{myassessmentBean.sendEvaluation()}" value="Evaluate" />
+						</div>
+					</div>
+				</h:form>
+			</h:panelGroup>
+		</div>
+	</ui:define>
+</ui:composition>

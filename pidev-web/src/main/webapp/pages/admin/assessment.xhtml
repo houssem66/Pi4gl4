@@ -1,0 +1,99 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jstl/core" template="/test.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="houss">
+		<div class="row">
+			<h:panelGroup columns="2">
+				<h:form>
+					<div class="main-card mb-3 card">
+						<div class="card-body">
+							<h5 class="card-title">Add Assessment</h5>
+							<div class="position-relative form-group">
+								<h:outputText value="Employee"></h:outputText>
+								<h:selectOneMenu class="form-control"
+									value="#{assessmentBean.employeeId}">
+									<c:forEach items="#{assessmentBean.employees}" var="e">
+										<f:selectItem itemValue="#{e.idEmployee}"
+											itemLabel="#{e.firstName} #{e.lastName}" />
+									</c:forEach>
+								</h:selectOneMenu>
+							</div>
+
+							<div class="position-relative form-group">
+								<h:outputText value="Type"></h:outputText>
+								<h:selectOneMenu class="form-control"
+									value="#{assessmentBean.type}">
+									<f:selectItems value="#{assessmentBean.types}" />
+								</h:selectOneMenu>
+							</div>
+
+							<h:commandButton class="btn mr-2 mb-2 btn-primary"
+								data-toggle="modal" data-target=".bd-example-modal-lg"
+								value="Add Assessment"
+								action="#{assessmentBean.addAssessment()}" />
+
+
+
+
+
+						</div>
+					</div>
+				</h:form>
+			</h:panelGroup>
+		</div>
+
+		<div class="row">
+			<h:panelGroup columns="2">
+				<h:form>
+					<div class="main-card mb-3 card">
+						<div class="card-body">
+							<h5 class="card-title">Assessment List</h5>
+							<table class="mb-0 table">
+								<thead>
+									<tr>
+										<th>Employee</th>
+										<th>Type</th>
+										<th>Finished a 360 assessment</th>
+										<th>Finished a self assessment</th>
+										<th>Score</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="#{assessmentBean.assessments}" var="a">
+										<tr>
+											<td>#{a.employee.firstName} #{a.employee.lastName}</td>
+											<td>#{a.type}</td>
+											<td>#{a.isDone360() == true ? 'yes' : 'no'}</td>
+											<td>#{a.isDoneSelf() == true ? 'yes' : 'no'}</td>
+											<td>#{a.scoreGlobal}</td>
+											<td><h:commandButton
+													onclick="if (! confirm('Really want to delete this assessment?')) return false"
+													class='btn btn-danger btn-xs' id="btnDelete"
+													name="remove_assess"
+													action="#{assessmentBean.deleteAssessment(a.idAssessment)}"
+													value="Supprimer" />
+												<c:if test="#{a.scoreGlobal>0}">
+												<br></br>
+													<h:commandButton
+													class='btn btn-Secondary btn-xs' 
+													action="#{assessmentBean.resultAssessment(a.idAssessment)}"
+													value="Asign result" />
+												</c:if>
+												</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</h:form>
+			</h:panelGroup>
+		</div>
+
+	</ui:define>
+</ui:composition>
