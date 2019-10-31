@@ -8,20 +8,18 @@
 	<ui:define name="houss">
 	<h:panelGroup columns="2">
 	<h:form>
-				<table>
-					<tr>
-						<td><h:outputText value="Nom"></h:outputText></td>
-						<td><h:inputText value="#{ficheMetierBean.nom}"></h:inputText></td>
-					</tr>
-					<tr>
-						<td><h:outputText value="description"></h:outputText></td>
-						<td><h:inputText value="#{ficheMetierBean.description}"></h:inputText></td>
-					</tr>
+				
+						<label for="exampleSelect" class="">Name</label>
+						<h:inputText class="form-control" value="#{ficheMetierBean.nom}"></h:inputText>
+					
+						<label for="exampleSelect" class="">Description</label>
+						<h:inputText class="form-control" value="#{ficheMetierBean.description}"></h:inputText>
+					
 					
 
 					
-				</table>
-				<h:commandButton action="#{ficheMetierBean.updateFiche()}"
+				
+				<h:commandButton class="mb-2 mr-2 btn btn-primary btn-block" action="#{ficheMetierBean.updateFiche()}"
 							value="Confirm" />
 			</h:form>
 			

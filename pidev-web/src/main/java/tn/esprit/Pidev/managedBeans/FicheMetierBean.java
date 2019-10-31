@@ -60,6 +60,7 @@ public class FicheMetierBean implements Serializable {
 	}
 	public String redAffectation(FicheMetier fi) {
 		this.fiche=fi;
+		
 		return "Affecter";
 
 	}

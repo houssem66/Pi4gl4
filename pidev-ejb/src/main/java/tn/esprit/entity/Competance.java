@@ -29,9 +29,8 @@ public class Competance implements Serializable {
 	private String Description;
 	@Enumerated(EnumType.STRING)
 	private Type type;
-	@ManyToMany( fetch = FetchType.EAGER)
 	
-	private List<MatriceComp> matriceComp;
+	
 
 	public Competance() {
 
