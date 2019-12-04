@@ -21,6 +21,9 @@ public class main {
 
 		 String unencodedString = new String (unencodedStringArray);  
 
+		 System.out.println ("The unencoded string is: " + unencodedString);  System.out.println ("The unencoded string is: " + unencodedString);  System.out.println ("The unencoded string is: " + unencodedString);  
+		 System.out.println ("The unencoded string is: " + unencodedString);  
+		 System.out.println ("The unencoded string is: " + unencodedString);  
 		 System.out.println ("The unencoded string is: " + unencodedString);  
 
 	}
