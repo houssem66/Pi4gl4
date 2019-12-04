@@ -26,6 +26,7 @@ public class FilterSecurity implements ContainerRequestFilter {
 			List<String> authHeader = requestContext.getHeaders().get(AUTHORIZATION_HEADER_KEY);
 			if (authHeader != null && authHeader.size() > 0) {
 				String authToken = authHeader.get(0);
+								System.out.println(authToken);
 
 				authToken = authToken.replaceFirst(AUTHORIZATION_HEADER_PREFIX, "");
 				if (authToken.contains("dXNlcjpwYXNzd29yZA==")) {
