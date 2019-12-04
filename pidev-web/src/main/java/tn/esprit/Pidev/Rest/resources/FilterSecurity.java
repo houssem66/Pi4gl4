@@ -18,7 +18,7 @@ public class FilterSecurity implements ContainerRequestFilter {
 
 	private static final String AUTHORIZATION_HEADER_KEY = "Authorization";
 	private static final String AUTHORIZATION_HEADER_PREFIX = "Basic";
-	private static final String SECURED_URL_PREFIX = "/Services";
+	private static final String SECURED_URL_PREFIX = "/SecService";
 
 	@Override
 	public void filter(ContainerRequestContext requestContext) throws IOException {
