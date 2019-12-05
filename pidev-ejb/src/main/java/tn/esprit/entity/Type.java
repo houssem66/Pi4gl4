@@ -1,5 +1,5 @@
 package tn.esprit.entity;
 
-public enum Type {concept,coding,langues
+public enum Type {concept,coding,langues,finance
 
 }

@@ -11,6 +11,14 @@
 				<div class="main-card mb-3 card">
 					<div class="card-body">
 						<h5 class="card-title">index</h5>
+
+						<h:inputText id="search" value="#{competanceBean.searchString}"
+							onkeypress="if (event.keyCode == 13) {onchange(event); return false;}"
+							onchange="return event.keyCode !== undefined">
+							<f:ajax listener="#{competanceBean.updateCompetance}"
+								render="output" />
+						</h:inputText>
+
 						<table class="mb-0 table">
 
 							<tbody>
@@ -58,20 +66,76 @@
 								</tr>
 							</tbody>
 						</table>
+						<h:panelGroup columns="2">
+							<h:form>
+								<h:commandButton class="mb-2 mr-2 btn btn-primary btn-block"
+									action="#{competanceBean.redADD()}" value="Create" />
 
+							</h:form>
+
+						</h:panelGroup>
+						<h5 class="card-title">Résultat</h5>
+
+						<table class="mb-0 table">
+
+							<tbody>
+								<tr>
+									<h:dataTable class="mb-0 table table-hover" id="output"
+										value="#{competanceBean.competances2}" var="competance2">
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Name" />
+											</f:facet>
+											<h:outputText value="#{competance2.name}" />
+										</h:column>
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="ID" />
+											</f:facet>
+											<h:outputText value="#{competance2.id}" />
+										</h:column>
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Description" />
+											</f:facet>
+											<h:outputText value="#{competance2.description}" />
+										</h:column>
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Description" />
+											</f:facet>
+											<h:outputText value="#{competance2.type}" />
+										</h:column>
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="Action" />
+											</f:facet>
+											<h:commandButton class="mb-2 mr-2 btn btn-danger"
+												action="#{competanceBean.deletecompetance(competance.id)}"
+												value="Supprimer" />
+											<h:commandButton class="mb-2 mr-2 btn btn-primary"
+												action="#{competanceBean.redModify(competance)}"
+												value="Modify" />
+
+
+										</h:column>
+									</h:dataTable>
+								</tr>
+							</tbody>
+						</table>
 
 					</div>
-					<h:panelGroup columns="2">
-						<h:form>
-							<h:commandButton class="mb-2 mr-2 btn btn-primary btn-block"
-								action="#{competanceBean.redADD()}" value="Create" />
 
-						</h:form>
 
-					</h:panelGroup>
 				</div>
+
 			</h:form>
 		</h:panelGroup>
+
+
+
+
+
 
 
 

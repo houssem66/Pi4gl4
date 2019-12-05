@@ -10,14 +10,14 @@
 				<div class="card-body">
 					<h:panelGroup columns="2">
 						<h:form>
-							<label for="exampleSelect" class="">Category</label>
-									<h:selectOneMenu class="form-control" value="#{ficheMetierBean.category}">
-											<f:selectItem itemLabel="Choisir Category" itemValue="" />
-											<f:selectItems value="#{dataBean.category}" />
+							<label for="exampleSelect" class="">Employe</label>
+									<h:selectOneMenu class="form-control" value="#{ficheMetierBean.emplyeid}">
+											<f:selectItem itemLabel="Choisir employe"  />
+											<f:selectItems value="#{ficheMetierBean.employes}" itemValue="#{emp.id}" var="emp" itemLabel="#{emp.nom}"/>
 										</h:selectOneMenu>
 								
 								
-									<h:commandButton  class="mb-2 mr-2 btn btn-dark" action="#{ficheMetierBean.AffecterMat()}"
+									<h:commandButton  class="mb-2 mr-2 btn btn-dark" action="#{ficheMetierBean.AffecterEmp()}"
 										value="confirm" />
 
 

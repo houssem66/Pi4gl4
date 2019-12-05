@@ -1,30 +1,33 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/test.xhtml">
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="/test.xhtml">
 
 	<ui:param name="page_name" value="Accueil" />
 	<ui:define name="houss">
-	<h:panelGroup columns="2">
-	<h:form>
-				<table>
-					<tr>
-						<td><h:outputText value="Nom"></h:outputText></td>
-						<td><h:inputText value="#{ficheMetierBean.nom}"></h:inputText></td>
-					</tr>
-					<tr>
-						<td><h:outputText value="description"></h:outputText></td>
-						<td><h:inputText value="#{ficheMetierBean.description}"></h:inputText></td>
-					</tr>
-					
-					<tr>
-						<td colspan="2"><h:commandButton value="Create"
-								action="#{ficheMetierBean.addFicheMetier()}" /></td>
-								
-					</tr>
-				</table>
-			</h:form>
-		</h:panelGroup>
-		</ui:define>
+		<div class="col-md-6">
+			<div class="main-card mb-3 card">
+				<div class="card-body">
+					<h:panelGroup columns="2">
+						<h:form>
+
+							<label for="exampleSelect" class="">Nom</label>
+							<h:inputText class="form-control" value="#{ficheMetierBean.nom}"></h:inputText>
+
+
+							<label for="exampleSelect" class="">Description</label>
+							<h:inputText class="form-control"
+								value="#{ficheMetierBean.description}"></h:inputText>
+
+
+
+							<h:commandButton class="mb-2 mr-2 btn btn-primary btn-block"
+								value="Create" action="#{ficheMetierBean.addFicheMetier()}" />
+						</h:form>
+			</h:panelGroup>
+				</div>
+			</div>
+		</div>
+		
+	</ui:define>
 </ui:composition>

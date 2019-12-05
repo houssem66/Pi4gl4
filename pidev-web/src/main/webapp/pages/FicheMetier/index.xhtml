@@ -42,7 +42,10 @@
 											<f:facet name="header">
 												<h:outputText value="Afected Matrix" />
 											</f:facet>
-											<h:outputText value="#{fiche.matricecomp.category}" />
+											<h:outputText href="" value="#{fiche.matricecomp.category}" />
+										<h:commandButton class="mb-2 mr-2 btn btn-dark"
+												action="#{ficheMetierBean.redirectionListComp(fiche.matricecomp.id)}"
+												value="Voir List comp" />
 										</h:column>
 
 										<h:column>
@@ -56,7 +59,10 @@
 												value="Modify" class="mb-2 mr-2 btn btn-primary"  />
 											<h:commandButton class="mb-2 mr-2 btn btn-success"
 												action="#{ficheMetierBean.redAffectation(fiche)}"
-												value="affecter une matrice" />
+												value="affecter a matrice " />
+												<h:commandButton class="mb-2 mr-2 btn btn-success"
+												action="#{ficheMetierBean.redAffectationEmp(fiche)}"
+												value="affecter  a employe" />
 
 
 										</h:column>

@@ -1,5 +1,5 @@
 package tn.esprit.entity;
 
-public enum Category {langues,coding,theorique
+public enum Category {Programmeur,Finance,testeur, concepteur
 
 }

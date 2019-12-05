@@ -1,6 +1,8 @@
 package tn.esprit.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,8 +18,15 @@ public class Employe// extends User
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
 	private String nom;
+	private String prenom;
+	@Enumerated(EnumType.STRING)
+    private Grade grade;
 	private String title;
-	
+	@OneToOne
+	FicheMetier ficheMetier;
+	@OneToOne
+	MatriceComp matriceComp;
+	boolean demande;
 	public Employe() {
 		
 	}

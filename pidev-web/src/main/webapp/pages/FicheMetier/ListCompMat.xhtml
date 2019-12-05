@@ -16,7 +16,7 @@
 							<tbody>
 								<tr>
 									<h:dataTable class="mb-0 table table-hover"
-										value="#{matriceCompBean.competances}" var="competance">
+										value="#{ficheMetierBean.competances}" var="competance">
 										<h:column>
 											<f:facet name="header">
 												<h:outputText value="Name" />
@@ -37,11 +37,25 @@
 										</h:column>
 										<h:column>
 											<f:facet name="header">
-												<h:outputText value="Description" />
+												<h:outputText value="Niveau" />
 											</f:facet>
-											<h:outputText value="#{competance.type}" />
+											<h:outputText value="#{ficheMetierBean.off}" />
 										</h:column>
-										
+										<h:column>
+											<f:facet name="header">
+												<h:outputText value="SetNiveau" />
+											</f:facet>
+											<h:inputText class="form-control"
+												value="#{ficheMetierBean.niveau}"></h:inputText>
+										</h:column>
+										<h:column>
+											<f:facet name="Action">
+												<h:outputText value="Action" />
+											</f:facet>
+											<h:commandButton class="mb-2 mr-2 btn btn-dark"
+												action="#{ficheMetierBean.ModifyNiv(competance.id)}"
+												value="Set niveau" />
+										</h:column>
 									</h:dataTable>
 								</tr>
 							</tbody>
@@ -49,14 +63,7 @@
 
 
 					</div>
-					<h:panelGroup columns="2">
-						<h:form>
-							<h:commandButton class="mb-2 mr-2 btn btn-dark" action="#{matriceCompBean.redirectionListComp()}"
-							value="choisir des competances" />
 
-						</h:form>
-
-					</h:panelGroup>
 				</div>
 			</h:form>
 		</h:panelGroup>

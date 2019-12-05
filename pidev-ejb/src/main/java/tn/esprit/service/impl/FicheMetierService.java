@@ -7,20 +7,20 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import tn.esprit.entity.*;
-import tn.esprit.service.interfaces.IFicheMetierServiceLocale;
+import tn.esprit.service.interfaces.IFicheMetierServiceRemote;
 
 @LocalBean
 
 @Stateless
-public class FicheMetierService implements IFicheMetierServiceLocale{
+public class FicheMetierService implements IFicheMetierServiceRemote{
 
 @PersistenceContext(unitName="pidev-ejb")
 	
 	EntityManager em ;
 	@Override
-	public void addFicheMetier(FicheMetier ficheMetier) {
+	public int addFicheMetier(FicheMetier ficheMetier) {
 		em.persist(ficheMetier);
-		
+		return ficheMetier.getId();
 	}
 
 	@Override
@@ -37,11 +37,11 @@ public class FicheMetierService implements IFicheMetierServiceLocale{
 
 	@Override
 	public void updateFicheMetier(FicheMetier ficheMetier) {
-		FicheMetier us= em.find(FicheMetier.class,ficheMetier.getId());
+	/*	FicheMetier us= em.find(FicheMetier.class,ficheMetier.getId());
 		System.out.println("Updated !!"+ficheMetier.getId());
 		us.setName(ficheMetier.getName());
 		us.setDescription(ficheMetier.getDescription());
-		
+		*/
 			}
 
 	@Override
@@ -51,19 +51,6 @@ public class FicheMetierService implements IFicheMetierServiceLocale{
 		
 	}
 
-	@Override
-	public void affecterMat(MatriceComp matrice,FicheMetier ficheMetier) {
-		FicheMetier us= em.find(FicheMetier.class,ficheMetier.getId());
-		us.setMatricecomp(matrice);
-		
-	}
-
-	@Override
-	public void affecterAemploye(FicheMetier ficheMetier,Employe employe) {
-		
-		FicheMetier us= em.find(FicheMetier.class,ficheMetier.getId());
-		us.setEmploye(employe);
-		
-	}
+	
 
 }

@@ -5,26 +5,34 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import tn.esprit.entity.*;
-import tn.esprit.service.interfaces.ICompetanceServiceLocale;
+import tn.esprit.service.interfaces.ICompetanceServiceRemote;
 
 @LocalBean
 
 @Stateless
-public class CompetanceService implements ICompetanceServiceLocale{
+public class CompetanceService implements ICompetanceServiceRemote{
 
 @PersistenceContext(unitName="pidev-ejb")
 	
 	EntityManager em ;
 
 	@Override
-	public void addCompetance(Competance competance) {
+	public int addCompetance(Competance competance) {
 		
 		em.persist(competance);
+		return competance.getId();
 		
 	}
-
+	@Override
+	public int addlol(lol competance) {
+		
+		em.persist(competance);
+		return 0;
+		
+	}
 	@Override
 	public Competance getCompetanceById(int id) {
 		// TODO Auto-generated method stub
@@ -49,11 +57,20 @@ public class CompetanceService implements ICompetanceServiceLocale{
 		
 		
 	}
-
 	@Override
 	public List<Competance> getAllCompetances() {
-		// TODO Auto-generated method stub
+		
 		return em.createQuery("SELECT c from Competance c", Competance.class).getResultList();
+	}
+
+	@Override
+	public List<Competance> getAllCompetancesByName(String Name) {
+		 TypedQuery<Competance> query = em.createQuery("select m from Competance m where m.Name = :name",Competance.class);
+		query.setParameter("name", Name);
+		List<Competance> c =  query.getResultList();
+		
+		return c;
+	
 	}
 
 }

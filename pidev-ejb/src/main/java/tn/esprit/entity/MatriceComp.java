@@ -29,92 +29,62 @@ public class MatriceComp implements Serializable {
 	@Column(name="Id",nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
-	
-	@Enumerated(EnumType.STRING)
-    @NotNull
-	private Category category;
+	@OneToOne(mappedBy="matriceComp",cascade=CascadeType.ALL)
+	private Employe employe;
 	private String Description;
-	@ManyToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
-	@JoinTable(name = "MatriceComp_Comp",
-    joinColumns = {@JoinColumn(name = "idMatrice", referencedColumnName = "Id")},
-    inverseJoinColumns = { @JoinColumn(name = "idCompetance", referencedColumnName = "Id")}
-	)
-	private List<Competance> competances;
+	@OneToMany(mappedBy="matriceComp")
+	private  List<NiveauxMat> NiveauxMat;
 
 	public MatriceComp() {
 
 	}
 
 	
-	public MatriceComp(int id, Category category, String description) {
-		
-		Id = id;
-		this.category = category;
-		Description = description;
-	}
-
-
-
-
-
-	public MatriceComp(Category category, String description) {
-	
-		this.category = category;
-		Description = description;
-	}
-
-
-
-
-
-	public MatriceComp(int id, Category category, String description, List<Competance> competances) {
-		
-		Id = id;
-		this.category = category;
-		Description = description;
-		this.competances = competances;
-	}
-
-
-
-
-
-	public List<Competance> getCompetances() {
-		return competances;
-	}
-
-	public void setCompetances(List<Competance> competances) {
-		this.competances = competances;
-	}
 
 	public int getId() {
 		return Id;
 	}
 
+
 	public void setId(int id) {
 		Id = id;
 	}
+
 
 	public String getDescription() {
 		return Description;
 	}
 
+
 	public void setDescription(String description) {
 		Description = description;
 	}
 
-	
 
-	
-
-
-	public Category getCategory() {
-		return category;
+	public List<NiveauxMat> getNiveauxMat() {
+		return NiveauxMat;
 	}
 
-	public void setCategory(Category category) {
-		this.category = category;
+
+	public void setNiveauxMat(List<NiveauxMat> niveauxMat) {
+		NiveauxMat = niveauxMat;
 	}
+
+
+
+	public MatriceComp(int id, String description) {
+		super();
+		Id = id;
+		Description = description;
+	}
+
+
+
+	public MatriceComp(String description) {
+		super();
+		Description = description;
+	}
+
 
 
 	@Override
@@ -123,10 +93,10 @@ public class MatriceComp implements Serializable {
 		int result = 1;
 		result = prime * result + ((Description == null) ? 0 : Description.hashCode());
 		result = prime * result + Id;
-		result = prime * result + ((category == null) ? 0 : category.hashCode());
-		result = prime * result + ((competances == null) ? 0 : competances.hashCode());
+		result = prime * result + ((NiveauxMat == null) ? 0 : NiveauxMat.hashCode());
 		return result;
 	}
+
 
 
 	@Override
@@ -145,14 +115,17 @@ public class MatriceComp implements Serializable {
 			return false;
 		if (Id != other.Id)
 			return false;
-		if (category != other.category)
-			return false;
-		if (competances == null) {
-			if (other.competances != null)
+		if (NiveauxMat == null) {
+			if (other.NiveauxMat != null)
 				return false;
-		} else if (!competances.equals(other.competances))
+		} else if (!NiveauxMat.equals(other.NiveauxMat))
 			return false;
 		return true;
 	}
 
+
+	
+
+
+	
 }

@@ -1,42 +1,36 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/test.xhtml">
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="/test.xhtml">
 
 	<ui:param name="page_name" value="Accueil" />
 	<ui:define name="houss">
-	<div class="col-md-6">
+		<div class="col-md-6">
 			<div class="main-card mb-3 card">
 				<div class="card-body">
-	<h:panelGroup columns="2">
-	<h:form>
-				
-					<label for="exampleSelect" class="">Nom</label>
-						
-						<h:inputText class="form-control" value="#{competanceBean.name}"></h:inputText>
-					
-					  
-						<label for="exampleSelect" class="">Description</label>
-						<h:inputTex class="form-control" value="#{competanceBean.description}"></h:inputText>
-					
-					  
-						<label for="exampleSelect" class="">Type</label>
-						<h:selectOneMenu class="form-control" value="#{competanceBean.type}">
+					<h:panelGroup columns="2">
+						<h:form>
+
+							<label for="exampleSelect" class="">Category</label>
+							<h:inputText class="form-control" value="#{competanceBean.name}"></h:inputText>
+							<label for="exampleSelect" class="">Category</label>
+							<h:inputText class="form-control"
+								value="#{competanceBean.description}"></h:inputText>
+
+							<label for="exampleSelect" class="">Category</label>
+							<h:selectOneMenu class="form-control"
+								value="#{competanceBean.type}">
 								<f:selectItem itemLabel="Choisir Type" itemValue="" />
 								<f:selectItems value="#{dataBean.type}" />
 							</h:selectOneMenu>
-					
-					
-					
-				
-				<h:commandButton class="mb-2 mr-2 btn btn-primary btn-block" action="#{competanceBean.updatecompetance()}"
-							value="Confirm" />
-			</h:form>
-			</div>
+							<h:commandButton class="mb-2 mr-2 btn btn-primary btn-block"
+								action="#{competanceBean.updatecompetance()}" value="Confirm" />
+						</h:form>
+
+
+					</h:panelGroup>
+				</div>
 			</div>
 		</div>
-						
-		</h:panelGroup>
-		</ui:define>
+	</ui:define>
 </ui:composition>

@@ -10,21 +10,21 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import tn.esprit.entity.*;
-import tn.esprit.service.interfaces.IMatriceCompServiceLocale;
+import tn.esprit.service.interfaces.IMatriceCompServiceRemote;
 
 @LocalBean
 
 @Stateless
-public class MatriceCompService implements IMatriceCompServiceLocale {
+public class MatriceCompService implements IMatriceCompServiceRemote {
 
 	@PersistenceContext(unitName = "pidev-ejb")
 
 	EntityManager em;
 
 	@Override
-	public void addMatriceComp(MatriceComp matriceComp) {
+	public int addMatriceComp(MatriceComp matriceComp) {
 		em.persist(matriceComp);
-
+        return matriceComp.getId();
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class MatriceCompService implements IMatriceCompServiceLocale {
 	public void updateMatriceComp(MatriceComp matriceComp) {
 		MatriceComp us = em.find(MatriceComp.class, matriceComp.getId());
 		System.out.println("Updated !!" + matriceComp.getId());
-		us.setCategory(matriceComp.getCategory());
+		
 		us.setDescription(matriceComp.getDescription());
 
 	}
@@ -53,40 +53,6 @@ public class MatriceCompService implements IMatriceCompServiceLocale {
 	public List<MatriceComp> getAllMatriceComps() {
 		// TODO Auto-generated method stub
 		return em.createQuery("from MatriceComp", MatriceComp.class).getResultList();
-	}
-	
-	@Override
-	public List<Competance> getAllCompetances(int marticeid) {
-		
-		
-		List<Competance> competances = em.find(MatriceComp.class, marticeid).getCompetances();
-		return competances ;
-	}
-
-	public void affecterCompetanceAmatrice(int competanceid, int matriceid/*, int niveau*/) {
-		Competance compAajout = em.find(Competance.class, competanceid);
-		MatriceComp matManagedEntity = em.find(MatriceComp.class, matriceid);
-
-		if (matManagedEntity.getCompetances() == null) {
-			List<Competance> competances = new ArrayList<>();
-			//compAajout.setNiveau(niveau);
-			competances.add(compAajout);
-			matManagedEntity.setCompetances(competances);
-			;
-		} else {
-			matManagedEntity.getCompetances().add(compAajout);
-		}
-
-	}
-
-	@Override
-	public MatriceComp getMatriceCompByCategory(Category category) {
-
-		Query query = em.createQuery("select m from MatriceComp m where m.category = :category");
-		query.setParameter("category", category);
-		MatriceComp c = (MatriceComp) query.getSingleResult();
-		System.out.println("fuck !" + c.getCategory()+c.getId());
-		return c;
 	}
 
 }

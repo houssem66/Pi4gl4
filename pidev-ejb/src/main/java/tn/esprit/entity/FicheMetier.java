@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,108 +23,36 @@ public class FicheMetier implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
-	private String Name;
-	@OneToOne
-	private Employe employe;
-	private String description;
-	@ManyToOne
-	private MatriceComp matricecomp;
-
+	@Enumerated(EnumType.STRING)
+    @NotNull
+	private Category category;
+	@OneToMany(mappedBy="fiche",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	private  List<NiveauxFiche> NiveauxFiche;
 	public FicheMetier() {
 
 	}
-
-	// constructeur sans id et matricecomps
-	public FicheMetier(String name, Employe employe, String description) {
-
-		Name = name;
-		this.employe = employe;
-		this.description = description;
-		
-	}
-	public FicheMetier(int id,String name, String description) {
-
-		Name = name;
-		this.Id=id;
-		this.description = description;
-		
-	}
-	public FicheMetier(String name,  String description) {
-
-		Name = name;
-		this.description = description;
-		
-	}
-// constructeur avec id sans matricecomps
-	public FicheMetier(int id, String name, Employe employe, String description   ) {
-		
-		Id = id;
-		Name = name;
-		this.employe = employe;
-		this.description = description;
-	}
-
-	public FicheMetier(String name, Employe employe, String description,  MatriceComp matricecomp) {
-		
-		Name = name;
-		this.employe = employe;
-		this.description = description;
-		this.matricecomp = matricecomp;
-	}
-
-	public FicheMetier(int id, String name, Employe employe, String description,   
-			MatriceComp matricecomp) {
-		
-		Id = id;
-		Name = name;
-		this.employe = employe;
-		this.description = description;
-		
-		this.matricecomp = matricecomp;
-	}
-
 	public int getId() {
 		return Id;
 	}
-
 	public void setId(int id) {
 		Id = id;
 	}
-
-	public String getName() {
-		return Name;
+	public Category getCategory() {
+		return category;
 	}
-
-	public void setName(String name) {
-		Name = name;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
-
-	public Employe getEmploye() {
-		return employe;
+	public List<NiveauxFiche> getNiveauxFiche() {
+		return NiveauxFiche;
 	}
-
-	public void setEmploye(Employe employe) {
-		this.employe = employe;
+	public void setNiveauxFiche(List<NiveauxFiche> niveauxFiche) {
+		NiveauxFiche = niveauxFiche;
 	}
-
-	public String getDescription() {
-		return description;
+	public FicheMetier(Category category) {
+		super();
+		this.category = category;
 	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public MatriceComp getMatricecomp() {
-		return matricecomp;
-	}
-
-	public void setMatricecomp(MatriceComp matricecomp) {
-		this.matricecomp = matricecomp;
-	}
-
-
-	
 	
 
 }

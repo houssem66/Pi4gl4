@@ -7,12 +7,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import tn.esprit.entity.*;
-import tn.esprit.service.interfaces.IEmployeServiceLocale;
+
+import tn.esprit.service.interfaces.IEmployeServiceRemote;
 
 @LocalBean
 
 @Stateless
-public class EmployeService implements IEmployeServiceLocale{
+public class EmployeService implements IEmployeServiceRemote{
 
 @PersistenceContext(unitName="pidev-ejb")
 	
